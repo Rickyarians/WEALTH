@@ -1,3 +1,26 @@
+<?php 
+
+require 'Config.php';
+
+
+if (isset($_POST["register"])) {
+
+
+    if (registrasi($_POST) > 0 ) {
+        echo "<script>
+                alert('Data berhasil Di Simpan!');
+              </script> ";
+             
+              
+    } else {
+
+        mysqli_error($conn);
+       
+    }
+}
+
+ ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -116,26 +139,26 @@
                             Daftar Admin
                         </h5>
                 <div class="card container">
-                       <form action="Tambah_admin.php" method="post">
+                       <form action="" method="post">
 
-                                <div class="form-group">
+                                <div class="form-group mt-4">
                                   <label for="namauser">Nama Admin : </label>
                                   <input type="text" class="form-control" id="namauser" name="nama_user" placeholder="Masukkan nama Admin" required>
                                 </div>
 
                                 <div class="form-group">
                                   <label for="usernameuser">Username : </label>
-                                  <input type="number" class="form-control" id="usernameuser" name="username_user" placeholder="Masukkan Username" required>
+                                  <input type="text" class="form-control" id="usernameuser" name="username_user" placeholder="Masukkan Username" required>
                                 </div>
 
                                  <div class="form-group">
                                   <label for="passworduser">Password : </label>
-                                  <input type="number" class="form-control" id="passworduser" name="password" placeholder="Masukkan Password" required>
+                                  <input type="password" class="form-control" id="passworduser" name="password" placeholder="Masukkan Password" required>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="passworduser2">Konfirmasi Password : </label>
-                                    <input type="number" name="password2" id="passworduser2" class="form-control" placeholder="Masukkan Konfirmasi Password" required>
+                                    <input type="password" name="password2" id="password2" class="form-control" placeholder="Masukkan Konfirmasi Password" required>
                                 </div>
 
                                 <div class="form-group">
@@ -145,7 +168,7 @@
 
                                
 
-                                <button type="submit" name="simpan" class="btn btn-success float-right"><i class="fas fa-save mr-2"> </i>Simpan</button>
+                                <button type="submit" name="register" class="btn btn-success float-right"><i class="fas fa-save mr-2"> </i>Simpan</button>
                               </form>
                     
 

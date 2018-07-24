@@ -207,4 +207,45 @@ function cari($keyword) {
     
 }
 
+function registrasi($data) {
+    global $conn;
+
+
+    $namauser = $data["nama_user"];
+    $username = strtolower(stripslashes($data["username_user"]));
+    $password = mysqli_real_escape_string($conn, $data["password"]);
+    $password2 = mysqli_real_escape_string($conn, $data["password2"]);
+    $emailuser = $data["alamatemailuser"];
+
+    if ($password !== $password2) {
+        echo "<script>
+                alert('Password tidak sama!');
+              </script>  ";
+              return false;
+    }
+
+    // cek username sudah pernah di input
+
+    $result = mysqli_query($conn, "SELECT username FROM admin WHERE username ='$username'" );
+
+    if (mysqli_fetch_assoc($result)) {
+        echo "<script>
+                alert('Username yang diinput sudah ada!');
+             </script>
+        ";
+        return false;
+    }
+
+    // enskripsi password 
+
+    $password = password_hash($password, PASSWORD_DEFAULT);
+
+
+    // tambahkan data ke database
+
+    mysqli_query($conn, "INSERT INTO admin VALUES ('', '$namauser', '$username', '$password', '$emailuser')");
+    return mysqli_affected_rows($conn);
+
+}
+
 ?>
