@@ -1,3 +1,14 @@
+<?php 
+
+require 'Config.php';
+
+$admin = query("SELECT * FROM admin");
+
+
+
+
+ ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -159,9 +170,7 @@
                                         <th class="align-middle">
                                             Alamat Email
                                         </th>
-                                        <th class="align-middle">
-                                            Password
-                                        </th>
+                                        
                                         <th class="align-middle">
                                             Create
                                         </th>
@@ -177,22 +186,24 @@
                                 </thead>
 
                                 <tbody>
+
+
+                                    <?php $numburut = 1; ?>
+                                    <?php foreach ($admin as $row) : ?>
                                     
                                     <tr>
                                         <td class="align-middle small">
-                                           
+                                           <?php echo $numburut; ?>
                                         </td>
 
                                         <td class="align-middle small">
-                                           
+                                           <?php echo $row["nama_admin"] ?>
                                         </td>
                                         
                                         <td class="align-middle small">
-                                           
+                                           <?php echo $row["email"] ?>
                                         </td>
-                                        <td class="align-middle small">
-                                            
-                                        </td>
+                                        
                                          <td class="align-middle small">
                                             
                                         </td>
@@ -209,7 +220,9 @@
 
                                         </td>
                                     </tr>
-                                    
+                                     <?php $numburut++; ?>
+                                    <?php endforeach; ?>
+                                   
 
                                 </tbody>
         
