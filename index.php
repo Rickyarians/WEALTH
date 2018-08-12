@@ -42,7 +42,7 @@ $jmlpasien = totalData("SELECT * FROM pasien");
         <button type="button" id="sidebarCollapse" class="btn btn-sm btn-outline-light ml-3 mr-2">
             <i class="fas fa-bars r-btn-menu"></i>
         </button>
-        <b>EAZY CROT TEAM</b>
+        <b>EAZY TEAM</b>
     </nav>
 
     <div class="wrapper">
